@@ -7,136 +7,186 @@
     <title>Fajar & Prita Planner 2.0</title>
 
     <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            padding: 15px;
-            margin: 0;
-        }
+      body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    padding: 20px;
+    margin: 0;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: 0.3s;
-        }
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
 
-        .card:hover {
-            transform: translateY(-3px);
-        }
+/* ===== PERSON CARD ===== */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+}
 
-        h2 {
-            text-align: center;
-        }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-        .category {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f7f7f7;
-            border-radius: 15px;
-        }
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffd1dc;
+    padding-bottom: 8px;
+}
 
-        .task {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
+/* ===== CATEGORY BOX ===== */
+.category {
+    margin-top: 25px;
+    padding: 18px;
+    background: linear-gradient(145deg, #ffffff, #fff4f7);
+    border-radius: 18px;
+    border: 1px solid #ffe0e6;
+    box-shadow: 0 8px 20px rgba(255, 105, 135, 0.08);
+    transition: 0.3s;
+}
 
-        .task span {
-            flex: 1;
-            margin-left: 8px;
-            word-break: break-word;
-        }
+.category:hover {
+    box-shadow: 0 10px 25px rgba(255, 105, 135, 0.15);
+}
 
-        .done {
-            text-decoration: line-through;
-            color: gray;
-        }
+.category-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ff4d6d;
+}
 
-        input[type="text"] {
-            padding: 8px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+/* garis pemisah elegan */
+.category::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ffd1dc, transparent);
+    margin-top: 15px;
+}
 
-        button {
-            padding: 7px 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 5px;
-        }
+/* ===== TASK STYLE ===== */
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #f3d6dc;
+    transition: 0.2s;
+}
 
-        .add-btn {
-            background: #ff6b81;
-            color: white;
-        }
+.task:hover {
+    background: #fff6f9;
+}
 
-        .delete-btn {
-            background: #ff4757;
-            color: white;
-        }
+.task span {
+    flex: 1;
+    font-size: 14px;
+}
 
-        .edit-btn {
-            background: #1e90ff;
-            color: white;
-        }
+.done {
+    text-decoration: line-through;
+    color: #999;
+}
 
-        .category-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+/* ===== INPUT & BUTTON ===== */
+input[type="text"] {
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ffd1dc;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.2s;
+}
 
-        /* 🔥 RESPONSIVE */
-        @media(max-width:768px) {
+input[type="text"]:focus {
+    border-color: #ff6b81;
+    box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.15);
+}
 
-            .task {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.2s;
+}
 
-            .task span {
-                margin: 5px 0;
-            }
+button:hover {
+    transform: translateY(-2px);
+}
 
-            button {
-                width: 100%;
-                margin-bottom: 5px;
-            }
+.add-btn {
+    background: linear-gradient(45deg, #ff6b81, #ff8fa3);
+    color: white;
+}
 
-        }
+.edit-btn {
+    background: linear-gradient(45deg, #1e90ff, #5dade2);
+    color: white;
+}
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
+.delete-btn {
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    color: white;
+}
 
-        .gallery img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 15px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
 
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
+.gallery img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: 0.3s;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+    .task {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100%;
+    }
+
+}
     </style>
 </head>
 
@@ -373,4 +423,5 @@ window.deleteCategory = async function(person, category){
 </body>
 
 </html>
+
 
