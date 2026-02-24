@@ -178,13 +178,16 @@
             width: 100%;
             height: 130px;
             object-fit: cover;
-            border-radius: 18px;
-            transition: 0.3s;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
         .gallery img:hover {
-            transform: scale(1.05);
+            transform: scale(1.07);
+            box-shadow: 0 8px 20px rgba(255, 105, 135, 0.3);
         }
 
         /* ===== RESPONSIVE ===== */
@@ -297,6 +300,66 @@
         .add-icon-btn:hover {
             transform: scale(1.2);
             box-shadow: 0 4px 12px rgba(255, 107, 129, 0.4);
+        }
+
+        /* ===== MODAL FULL IMAGE ===== */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        /* tombol close */
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+            color: #ff6b81;
+        }
+
+        /* animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
         }
     </style>
 </head>
@@ -535,30 +598,56 @@
         }
         loadData();
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            // Pakai event delegation (lebih aman)
+            document.addEventListener("click", function (e) {
+                if (e.target.matches(".gallery img")) {
+                    modal.style.display = "flex";
+                    modalImg.src = e.target.src;
+                }
+            });
+
+            window.closeImage = function () {
+                modal.style.display = "none";
+            }
+
+            modal.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    closeImage();
+                }
+            });
+
+        });
+    </script>
 
     <div class="card">
         <h3 style="text-align:center;">📸 Our Memories 💖</h3>
 
         <div class="gallery">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto1">
-            <img src="foto/IMG-20260214-WA0020.jpg.jpeg" alt="foto2">
-            <img src="foto/IMG-20260214-WA0021.jpg.jpeg" alt="foto3">
-            <img src="foto/IMG-20260218-WA0037.jpeg" alt="foto4">
-            <img src="foto/IMG-20260221-WA0013.jpg.jpeg" alt="foto5">
-            <img src="foto/f55c2abb-77d1-430d-bde3-83bb020a26d7.png" alt="foto6">
-            <img src="foto/f9c3f014-6d9a-46d0-8478-860cd66886c6.png" alt="foto7">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto2">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto3">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto4">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto5">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto6">
+            <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto7">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto8">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto9">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto10">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto11">
             <img src="foto/FOTO FAJAR SIDIK.jpg" alt="foto12">
         </div>
+        <!-- IMAGE MODAL -->
+        <div class="image-modal" id="imageModal">
+            <span class="close-modal" onclick="closeImage()">✖</span>
+            <img id="modalImage">
+        </div>
     </div>
 </body>
 
 </html>
-
-
-
-
